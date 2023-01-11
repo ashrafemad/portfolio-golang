@@ -37,3 +37,15 @@ func DeleteProject(id int) error {
 	}
 	return nil
 }
+
+func UpdateProject(project models.Project) (error, *models.Project) {
+	// err, project := RetrieveProject(id)
+	// if err != nil {
+	// 	return err, nil
+	// }
+	result := Database.Save(&project)
+	if result.Error != nil {
+		return result.Error, nil
+	}
+	return nil, &project
+}

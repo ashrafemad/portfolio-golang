@@ -36,5 +36,6 @@ func getRouters() *mux.Router {
 	routers.HandleFunc("/projects", controller.ListProjects).Methods("GET")
 	routers.HandleFunc("/projects/{id}", controller.RetrieveProject).Methods("GET")
 	routers.HandleFunc("/projects/{id}", controller.DeleteProject).Methods("DELETE")
+	routers.HandleFunc("/projects/{id}", controller.UpdateProject).Methods("PATCH")
 	return routers
 }

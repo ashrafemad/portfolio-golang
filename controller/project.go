@@ -69,3 +69,26 @@ func DeleteProject(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 }
+
+func UpdateProject(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id, err := strconv.Atoi(vars["id"])
+	if err != nil {
+		ErrorResponse(err, w)
+		return
+	}
+	err, project := db.RetrieveProject(id)
+	if err != nil {
+		ErrorResponse(err, w)
+		return
+	}
+	err = json.NewDecoder(r.Body).Decode(project)
+	err, project = db.UpdateProject(*project)
+	if err != nil {
+		ErrorResponse(err, w)
+		return
+	}
+	response, _ := json.Marshal(project)
+	w.WriteHeader(http.StatusOK)
+	w.Write(response)
+}

@@ -7,7 +7,7 @@
 
 
 ## TODO:
-1- complete all needed CRUD (projects still missing PATCH endpoint)
+1- complete all needed CRUD (~~ ~~projects still missing PATCH endpoint~~ ~~)
 
 2- Protect sensitive endpoints (POST - PATCH - DELETE) using an auth middleware (JWT ?)
 
